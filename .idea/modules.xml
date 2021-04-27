@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mrodnev.iml" filepath="$PROJECT_DIR$/.idea/modules/Mrodnev.iml" group="Mrodnev" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Mrodnev/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/locationmanager/locationmanager.iml" filepath="$PROJECT_DIR$/.idea/modules/locationmanager/locationmanager.iml" group="Mrodnev/locationmanager" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/prdownloader/prdownloader.iml" filepath="$PROJECT_DIR$/.idea/modules/prdownloader/prdownloader.iml" group="Mrodnev/prdownloader" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qrcodescanner/qrcodescanner.iml" filepath="$PROJECT_DIR$/.idea/modules/qrcodescanner/qrcodescanner.iml" group="Mrodnev/qrcodescanner" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spinnersearchable/spinnersearchable.iml" filepath="$PROJECT_DIR$/.idea/modules/spinnersearchable/spinnersearchable.iml" group="Mrodnev/spinnersearchable" />
+    </modules>
+  </component>
+</project>

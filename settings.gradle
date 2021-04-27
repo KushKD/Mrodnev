@@ -1,0 +1,6 @@
+include ':spinnersearchable'
+include ':prdownloader'
+include ':locationmanager'
+include ':qrcodescanner'
+include ':app'
+rootProject.name = "Mrodnev"
