@@ -69,7 +69,7 @@ public class NetworkUtils {
             conn.setUseCaches(false);
             conn.setConnectTimeout(10000);
             conn.setReadTimeout(10000);
-            conn.setRequestProperty("Content-Type", "application/text");
+            conn.setRequestProperty("Content-Type", "text/plain");
             conn.setInstanceFollowRedirects(true);
             conn.connect();
         } catch (Exception e) {

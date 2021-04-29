@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -44,6 +45,7 @@ public class CustomDialog {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView text = (TextView) dialog.findViewById(R.id.dialog_result);
+        text.setMovementMethod(new ScrollingMovementMethod());
         text.setText(msg);
 
         Button dialog_ok = (Button) dialog.findViewById(R.id.dialog_ok);

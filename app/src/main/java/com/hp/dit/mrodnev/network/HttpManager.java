@@ -59,11 +59,15 @@ public class HttpManager {
                         sb = NetworkUtils.getErrorStream(conn_);
                         responsePojoGet = new ResponsePojoGet();
                         responsePojoGet = Econstants.createOfflineObject(URL, data.getParam(), sb.toString(), Econstants.HTTP_FALIURE);
+                        System.out.println(sb.toString());
                         return responsePojoGet;
 
                     } else {
                         sb = NetworkUtils.getInputStream(conn_);
                         responsePojoGet = new ResponsePojoGet();
+                        System.out.println("=========================================");
+                        System.out.println(ED.decrypt(sb.toString()));
+                        System.out.println("=========================================");
                         responsePojoGet = Econstants.createOfflineObject(URL, data.getParam(), ED.decrypt(sb.toString()), Econstants.HTTP_SUCCESS);
 
 

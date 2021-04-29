@@ -3,6 +3,7 @@ package com.hp.dit.mrodnev.json;
 import android.util.Log;
 
 
+import com.hp.dit.mrodnev.Modal.SuccessResponse;
 import com.hp.dit.mrodnev.Modal.User;
 
 import org.json.JSONException;
@@ -15,14 +16,14 @@ import org.json.JSONObject;
  */
 public class JsonParse {
 
-    public static User getUSerDetilas(String data) throws JSONException {
+    public static SuccessResponse getSuccessResponse(String data) throws JSONException {
 
         JSONObject responseObject = new JSONObject(data);
-        User sr = new User();
-        sr.setUserName(responseObject.getString("user_name"));
-        sr.setUserId(responseObject.getInt("user_id"));
-        sr.setMobileNumber(responseObject.getLong("mobile_number"));
-        Log.e("Data", sr.toString());
+        SuccessResponse sr = new SuccessResponse();
+        sr.setStatus(responseObject.getString("STATUS"));
+        sr.setMessage(responseObject.getString("MSG"));
+        sr.setResponse(responseObject.getString("RESPONSE"));
+
         return sr;
     }
 

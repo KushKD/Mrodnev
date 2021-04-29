@@ -44,6 +44,9 @@ public class Econstants {
         pojo.setUrl(url);
         pojo.setRequestParams(requestParams);
         pojo.setResponse(response);
+        System.out.println("=========================================");
+        System.out.println("=========================================");
+        System.out.println(response);
         pojo.setResponseCode(Code);
 
         return pojo;

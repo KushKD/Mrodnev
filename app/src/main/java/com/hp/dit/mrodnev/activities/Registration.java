@@ -14,16 +14,28 @@ import androidx.core.content.ContextCompat;
 
 import com.hp.dit.mrodnev.Modal.RegistrationPojo;
 import com.hp.dit.mrodnev.Modal.ResponsePojoGet;
+import com.hp.dit.mrodnev.Modal.SuccessResponse;
 import com.hp.dit.mrodnev.Modal.UploadObject;
 import com.hp.dit.mrodnev.R;
 import com.hp.dit.mrodnev.enums.TaskType;
 import com.hp.dit.mrodnev.generic.GenericAsyncPostObject;
 import com.hp.dit.mrodnev.interfaces.AsyncTaskListenerObject;
+import com.hp.dit.mrodnev.json.JsonParse;
 import com.hp.dit.mrodnev.presentation.CustomDialog;
+import com.hp.dit.mrodnev.security.EncryptDecrypt;
 import com.hp.dit.mrodnev.utilities.AppStatus;
 import com.hp.dit.mrodnev.utilities.Econstants;
 
 import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class Registration extends AppCompatActivity implements AsyncTaskListenerObject {
 
@@ -130,12 +142,18 @@ public class Registration extends AppCompatActivity implements AsyncTaskListener
 
 
     @Override
-    public void onTaskCompleted(ResponsePojoGet result, TaskType taskType) throws JSONException {
+    public void onTaskCompleted(ResponsePojoGet result, TaskType taskType) throws JSONException, NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {
 
 
         if (TaskType.LOGIN == taskType) {
-            System.out.println(result.getResponse());
-            Log.e("Response", result.getResponse());
+            System.out.println(result.toString());
+            Log.e("Response", result.toString());
+
+            SuccessResponse response  = JsonParse.getSuccessResponse(result.getResponse());
+            EncryptDecrypt ED = new EncryptDecrypt();
+            Log.e("Decrypted Data", ED.decrypt(response.getResponse()) );
+
+
         }
 
 
