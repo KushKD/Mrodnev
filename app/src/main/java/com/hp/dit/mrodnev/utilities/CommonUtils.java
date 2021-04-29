@@ -13,8 +13,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.text.format.Formatter;
 import android.util.Base64;
@@ -24,8 +22,6 @@ import android.util.Patterns;
 import android.view.Display;
 import android.view.WindowManager;
 
-
-import com.hp.dit.mrodnev.Modal.PhoneDetailsPojo;
 
 import java.io.ByteArrayOutputStream;
 import java.net.InetAddress;
@@ -288,18 +284,7 @@ public class CommonUtils {
         return date;
     }
 
-    public static PhoneDetailsPojo getDeviceInfo(){
-        PhoneDetailsPojo phoneDetails = new PhoneDetailsPojo();
 
-            phoneDetails.setBrand(Build.BRAND);
-            phoneDetails.setId(Build.ID);
-            phoneDetails.setManufacturer(Build.MANUFACTURER);
-            phoneDetails.setModel(Build.MODEL);
-            phoneDetails.setSreial(Build.SERIAL);
-            phoneDetails.setVersion_code(Build.VERSION.RELEASE);
-            return phoneDetails;
-
-    }
 
 
      public static Integer str2Int(String str) {

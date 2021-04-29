@@ -1,20 +1,33 @@
-package com.hp.dit.mrodnev.network;
+package com.hp.dit.mrodnev.utilities;
 
 
-import javax.net.ssl.*;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 
 public class NetworkUtils {
 
     /**
      * SSL Handshake
-     * If the HTTPS Error Still exists , SSLSocketFactory class is used tof the Handshake
      */
     public static SSLSocketFactory getSSLSocketFactory() {
         SSLContext sslContext = null;
@@ -49,11 +62,6 @@ public class NetworkUtils {
         return sslContext.getSocketFactory();
     }
 
-    /**
-     * @param url
-     * @return HttpUrlConnection
-     * Method for Setting the Header and Footer of Connections
-     */
     public static HttpURLConnection getInputStreamConnection(String url) {
         HttpURLConnection conn = null;
         try {
@@ -62,8 +70,9 @@ public class NetworkUtils {
             if (url_.toString().startsWith("https")) {
                 HttpsURLConnection httpsURLConnection = (HttpsURLConnection) conn;
                 httpsURLConnection.setSSLSocketFactory(getSSLSocketFactory());
-        }
-            conn = (HttpURLConnection) url_.openConnection();
+            } else {
+                conn = (HttpURLConnection) url_.openConnection();
+            }
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setUseCaches(false);
@@ -78,42 +87,31 @@ public class NetworkUtils {
         return conn;
     }
 
-
-
-    /**
-     * @param conn_
-     * @return
-     * @throws IOException
-     * Methord to Get all the Errors from the Server . If status is not equal to 200
-     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static StringBuilder getErrorStream(HttpURLConnection conn_) throws IOException {
         StringBuilder sb = null;
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn_.getErrorStream(), "UTF-8"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn_.getErrorStream(), StandardCharsets.UTF_8));
         String line = null;
         sb = new StringBuilder();
         while ((line = br.readLine()) != null) {
             sb.append(line + "\n");
         }
         br.close();
-        System.out.println("Error==  "+ sb.toString());
+        Log.e("Error", sb.toString());
         return sb;
     }
 
-    /**
-     * @param conn_
-     * @return
-     * @throws IOException
-     * Method to get the Input Stream for Reading and Writing Data
-     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static StringBuilder getInputStream(HttpURLConnection conn_) throws IOException {
         StringBuilder sb = null;
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn_.getInputStream(), "UTF-8"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn_.getInputStream(), StandardCharsets.UTF_8));
         String line = null;
         sb = new StringBuilder();
         while ((line = br.readLine()) != null) {
             sb.append(line + "\n");
         }
         br.close();
+        Log.e("Data=--=-", sb.toString());
         return sb;
     }
 }

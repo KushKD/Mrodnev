@@ -12,7 +12,6 @@ import java.io.Serializable;
 public class UploadObject implements Serializable {
 
     private String url;
-    private ScanDataPojo scanDataPojo;
     private TaskType tasktype;
     private String methordName;
     private String param;
@@ -33,13 +32,7 @@ public class UploadObject implements Serializable {
         this.url = url;
     }
 
-    public ScanDataPojo getScanDataPojo() {
-        return scanDataPojo;
-    }
 
-    public void setScanDataPojo(ScanDataPojo scanDataPojo) {
-        this.scanDataPojo = scanDataPojo;
-    }
 
     public TaskType getTasktype() {
         return tasktype;
@@ -61,7 +54,6 @@ public class UploadObject implements Serializable {
     public String toString() {
         return "UploadObject{" +
                 "url='" + url + '\'' +
-                ", scanDataPojo=" + scanDataPojo +
                 ", tasktype=" + tasktype +
                 ", methordName='" + methordName + '\'' +
                 ", param='" + param + '\'' +

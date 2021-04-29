@@ -12,7 +12,7 @@ import android.content.SharedPreferences;
 public class Preferences {
 
     private static Preferences instance;
-        private  String preferenceName = "com.dit.himachal.appleseasonidpass";
+        private  String preferenceName = "com.dit.himachal.eLahaul";
         private SharedPreferences preferences;
         private SharedPreferences.Editor editor;
         private String KEY_DISTRICTID = "district_id";

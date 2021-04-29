@@ -1,12 +1,10 @@
 package com.hp.dit.mrodnev.Adapter;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
-import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +16,11 @@ import android.widget.Toast;
 import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.hp.dit.mrodnev.Modal.ModulesPojo;
 import com.hp.dit.mrodnev.R;
-import com.hp.dit.mrodnev.activities.GenerateIDCard;
 import com.hp.dit.mrodnev.activities.Registration;
 import com.hp.dit.mrodnev.lazyloader.ImageLoader;
 import com.hp.dit.mrodnev.presentation.CustomDialog;
 import com.hp.dit.mrodnev.utilities.Preferences;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -99,8 +95,9 @@ public class HomeGridViewAdapter extends BaseAdapter {
             public void onClick(View v) {
 
                 if (s.getId() == "1") {
-                    Intent i = new Intent(c.getApplicationContext(), GenerateIDCard.class);
-                    (c).startActivity(i);
+                    //Intent i = new Intent(c.getApplicationContext(), GenerateIDCard.class);
+                    //(c).startActivity(i);
+                    Log.e("Under","Progress");
 
                 }
                 if (s.getId().equalsIgnoreCase("4")) {
@@ -133,7 +130,7 @@ public class HomeGridViewAdapter extends BaseAdapter {
                 if (s.getId().equalsIgnoreCase("3")) {
                    //TODO
 
-                    CD.showDialogSearchByPassId((Activity) c);
+                  //  CD.showDialogSearchByPassId((Activity) c);
                 }
 
 

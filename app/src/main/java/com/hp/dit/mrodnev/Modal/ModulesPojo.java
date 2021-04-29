@@ -2,11 +2,6 @@ package com.hp.dit.mrodnev.Modal;
 
 import java.io.Serializable;
 
-/**
- * @author Kush.Dhawan
- * @project HPePass
- * @Time 01, 05 , 2020
- */
 public class ModulesPojo implements Serializable {
 
     private String id;

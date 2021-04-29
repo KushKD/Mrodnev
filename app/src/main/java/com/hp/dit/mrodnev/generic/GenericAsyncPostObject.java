@@ -49,16 +49,8 @@ public class GenericAsyncPostObject extends AsyncTask<UploadObject,Void , Respon
         try{
             http_manager = new HttpManager();
 
-            if(TaskType.SCAN_ID_CARD.toString().equalsIgnoreCase(data.getTasktype().toString())){
-                Data_From_Server = http_manager.PostDataScanQRCode(data);
-                Log.e("Data hhghsds",Data_From_Server.toString());
-                return Data_From_Server;
-            }else if(TaskType.VERIFY_DETAILS.toString().equalsIgnoreCase(data.getTasktype().toString())){
-                Data_From_Server = http_manager.PostDataScanQRCode(data);
-                Log.e("Data hhghsds",Data_From_Server.toString());
-                return Data_From_Server;
-            }else if(TaskType.SEARCH_ID.toString().equalsIgnoreCase(data.getTasktype().toString())){
-                Data_From_Server = http_manager.PostDataScanQRCode(data);
+            if(TaskType.LOGIN.toString().equalsIgnoreCase(data.getTasktype().toString())){
+                Data_From_Server = http_manager.PostDataLogin(data);
                 Log.e("Data hhghsds",Data_From_Server.toString());
                 return Data_From_Server;
             }

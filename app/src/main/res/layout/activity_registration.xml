@@ -19,14 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:paddingTop="10dp"
-                android:paddingLeft="40dp"
-                android:id="@+id/imageView1"
-                android:src="@drawable/logo_"
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
-
 
             <TextView
                 android:paddingTop="10dp"
@@ -39,9 +31,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_toEndOf="@+id/imageView1"
                 android:layout_toRightOf="@+id/imageView1"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|center|center_horizontal"
                 android:onClick="bugAndLuggage"
-                android:text="Register Yourself"
+                android:text="eLahaul Login"
                 android:paddingLeft="10dp"/>
 
 
@@ -56,8 +48,8 @@
         android:layout_height="match_parent"
         android:layout_weight="0.7"
         android:padding="10dp"
-        android:background="@drawable/customborder_dialog"
-        android:gravity="center_vertical|center_horizontal">
+        android:background="#FFFFFF"
+        android:gravity="center_vertical|center_horizontal|center">
 
         <ProgressBar
             android:id="@+id/login_progress"
@@ -82,86 +74,33 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:paddingTop="10dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:textColor="@color/navyblue"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_toEndOf="@+id/imageView1"
-                        android:layout_toRightOf="@+id/imageView1"
-                        android:gravity="center_vertical"
-
-                        android:text="Select District "
-                        android:paddingLeft="10dp"/>
-                    <com.doi.spinnersearchable.SearchableSpinner
-                        android:id="@+id/sp_district"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_margin="10dp"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:textColor="@color/navyblue"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:paddingTop="10dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:textColor="@color/navyblue"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_toEndOf="@+id/imageView1"
-                        android:layout_toRightOf="@+id/imageView1"
-                        android:gravity="center_vertical"
-
-                        android:text="Select Barrier "
-                        android:paddingLeft="10dp"/>
-
-                    <com.doi.spinnersearchable.SearchableSpinner
-                        android:id="@+id/sp_barrier"
-                        android:layout_margin="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:textColor="@color/navyblue"
-                        android:layout_weight="1" />
-
-
-
-
 
                     <EditText
-                        android:id="@+id/phone"
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:hint="Phone Number"
-                        android:imeActionLabel="Phone Number"
+                        android:hint="Username"
+                        android:imeActionLabel="Username"
                         android:imeOptions="actionUnspecified"
                         android:maxLines="1"
                         android:textSize="15sp"
-                        android:inputType="number"
-                        android:maxLength="10"
+                        android:inputType="text"
                         android:singleLine="true"
                         android:textColor="@color/navyblue"
                         android:textColorHint="@color/navyblue" />
 
 
                     <EditText
-                        android:id="@+id/otp"
+                        android:id="@+id/password"
                         android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:hint="Enter  OTP"
+                        android:hint="Password"
                         android:imeOptions="actionUnspecified"
                         android:maxLines="1"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:textSize="15sp"
                         android:singleLine="true"
                         android:textColor="@color/darkblue"
@@ -177,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@color/navyblue"
-                        android:text="Sign In"
+                        android:text="Login"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 

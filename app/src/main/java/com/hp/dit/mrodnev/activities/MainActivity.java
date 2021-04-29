@@ -19,12 +19,8 @@ import android.widget.GridView;
 
 import com.hp.dit.mrodnev.Adapter.HomeGridViewAdapter;
 import com.hp.dit.mrodnev.Adapter.SliderAdapter;
-import com.hp.dit.mrodnev.Modal.IDCardOwnerServerVerify;
-import com.hp.dit.mrodnev.Modal.IdCardScanPojo;
 import com.hp.dit.mrodnev.Modal.ModulesPojo;
 import com.hp.dit.mrodnev.Modal.ResponsePojoGet;
-import com.hp.dit.mrodnev.Modal.ScanDataPojo;
-import com.hp.dit.mrodnev.Modal.SuccessResponse;
 import com.hp.dit.mrodnev.Modal.UploadObject;
 import com.hp.dit.mrodnev.R;
 import com.hp.dit.mrodnev.enums.TaskType;
@@ -74,12 +70,6 @@ public class MainActivity extends LocationBaseActivity implements SamplePresente
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        String ipgetLocalIpAddress = CommonUtils.getLocalIpAddress();
-//        Log.e("ipgetLocalIpAddress",ipgetLocalIpAddress);
-//        Log.e("-=-=-=-=",CommonUtils.getIPAddress(true));  working
-
-
 
         home_gv = findViewById(R.id.gv);
         sliderView = findViewById(R.id.imageSlider);
@@ -165,85 +155,85 @@ public class MainActivity extends LocationBaseActivity implements SamplePresente
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.e("We are Here", intent.getAction());
-                   if (intent.getAction() == "verifyData") {
-
-                    //SCAN_DATA
-                    Log.e("We are Here 2sd ", intent.getAction());
-
-                    if (AppStatus.getInstance(MainActivity.this).isOnline()) {
-                        Bundle extras = intent.getExtras();
-                        String data = extras.getString("VEHICLE_TRANSACTION");
-                        Log.e("Data From Dialog", data.toString());
-
-                        UploadObject object = new UploadObject();
-                        object.setUrl(Econstants.url);
-                        object.setTasktype(TaskType.VERIFY_DETAILS);
-                        object.setMethordName(Econstants.methordSaveVehicleTransaction);
-                        object.setParam(data);
-                        Log.e("Data",data);
-
-                        new GenericAsyncPostObject(
-                                MainActivity.this,
-                                MainActivity.this,
-                                TaskType.VERIFY_DETAILS).
-                                execute(object);
-
-                    } else {
-                        CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-                    }
-
-
-                } else if (intent.getAction() == "SEARCHID") {
-
-                       //SCAN_DATA
-
-
-                       if (AppStatus.getInstance(MainActivity.this).isOnline()) {
-                           Bundle extras = intent.getExtras();
-                           String data = extras.getString("SEARCH_DATA");
-                           Log.e("Data From Dialog", data.toString());
-
-                           UploadObject object = new UploadObject();
-                           object.setUrl(Econstants.url);
-                           object.setTasktype(TaskType.SEARCH_ID);
-                           object.setMethordName(Econstants.methordSearchId);
-                           object.setParam(data);
-
-
-                           new GenericAsyncPostObject(
-                                   MainActivity.this,
-                                   MainActivity.this,
-                                   TaskType.SEARCH_ID).
-                                   execute(object);
-
-                       } else {
-                           CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-                       }
-
-
-                   }
+//                   if (intent.getAction() == "verifyData") {
+//
+//                    //SCAN_DATA
+//                    Log.e("We are Here 2sd ", intent.getAction());
+//
+//                    if (AppStatus.getInstance(MainActivity.this).isOnline()) {
+//                        Bundle extras = intent.getExtras();
+//                        String data = extras.getString("VEHICLE_TRANSACTION");
+//                        Log.e("Data From Dialog", data.toString());
+//
+//                        UploadObject object = new UploadObject();
+//                        object.setUrl(Econstants.url);
+//                        object.setTasktype(TaskType.VERIFY_DETAILS);
+//                        object.setMethordName(Econstants.methordSaveVehicleTransaction);
+//                        object.setParam(data);
+//                        Log.e("Data",data);
+//
+//                        new GenericAsyncPostObject(
+//                                MainActivity.this,
+//                                MainActivity.this,
+//                                TaskType.VERIFY_DETAILS).
+//                                execute(object);
+//
+//                    } else {
+//                        CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//                    }
+//
+//
+//                } else if (intent.getAction() == "SEARCHID") {
+//
+//                       //SCAN_DATA
+//
+//
+//                       if (AppStatus.getInstance(MainActivity.this).isOnline()) {
+//                           Bundle extras = intent.getExtras();
+//                           String data = extras.getString("SEARCH_DATA");
+//                           Log.e("Data From Dialog", data.toString());
+//
+//                           UploadObject object = new UploadObject();
+//                           object.setUrl(Econstants.url);
+//                           object.setTasktype(TaskType.SEARCH_ID);
+//                           object.setMethordName(Econstants.methordSearchId);
+//                           object.setParam(data);
+//
+//
+//                           new GenericAsyncPostObject(
+//                                   MainActivity.this,
+//                                   MainActivity.this,
+//                                   TaskType.SEARCH_ID).
+//                                   execute(object);
+//
+//                       } else {
+//                           CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//                       }
+//
+//
+//                   }
             }
         };
 
 
     }
 
-    private ScanDataPojo updateLocation(ScanDataPojo scanData) {
-        if (!userLocation.isEmpty()) {
-            try {
-                String[] locations = userLocation.split(",");
-                scanData.setLatitude(locations[0]);
-                scanData.setLongitude(locations[1]);
-            } catch (Exception ex) {
-                CD.showDialog(MainActivity.this, "Unable to get the Location.");
-            }
-        } else {
-            scanData.setLatitude("0");
-            scanData.setLongitude("0");
-        }
-
-        return scanData;
-    }
+//    private ScanDataPojo updateLocation(ScanDataPojo scanData) {
+//        if (!userLocation.isEmpty()) {
+//            try {
+//                String[] locations = userLocation.split(",");
+//                scanData.setLatitude(locations[0]);
+//                scanData.setLongitude(locations[1]);
+//            } catch (Exception ex) {
+//                CD.showDialog(MainActivity.this, "Unable to get the Location.");
+//            }
+//        } else {
+//            scanData.setLatitude("0");
+//            scanData.setLongitude("0");
+//        }
+//
+//        return scanData;
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -271,18 +261,13 @@ public class MainActivity extends LocationBaseActivity implements SamplePresente
                 String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
                 Log.d(LOGTAG, "Have scan result in your app activity :" + result);
                 // CD.showDialog(MainActivity.this, result);
-                try {
-                    IdCardScanPojo scanData = JsonParse.getObjectSave(result);
-                   // scanData = updateScanData(scanData);
-                   // Log.e("UserLocation", userLocation);
-                    //Log.e("scanDate", scanData.toString());
-                   // CD.showDialogScanData(MainActivity.this, scanData);
-                     uploadDataToServer(scanData);
-
-                } catch (JSONException  e) {
-                    CD.showDialog(MainActivity.this, result);
-                    e.printStackTrace();
-                }
+                Log.e("We are Here", "We are Here");
+                // IdCardScanPojo scanData = JsonParse.getObjectSave(result);
+                // scanData = updateScanData(scanData);
+                // Log.e("UserLocation", userLocation);
+                //Log.e("scanDate", scanData.toString());
+                // CD.showDialogScanData(MainActivity.this, scanData);
+                // uploadDataToServer(scanData);
 
 
             }
@@ -292,34 +277,34 @@ public class MainActivity extends LocationBaseActivity implements SamplePresente
 
     }
 
-    private void uploadDataToServer(IdCardScanPojo scanData) {
-
-        if (AppStatus.getInstance(MainActivity.this).isOnline()) {
-
-            Log.e("Data From Dialog", scanData.toString());
-
-            //TODO Internet Check
-            UploadObject object = new UploadObject();
-            object.setUrl(Econstants.url);
-            object.setMethordName(Econstants.methordverifyVehicle);
-            object.setTasktype(TaskType.SCAN_ID_CARD);
-            object.setParam(scanData.toJSON());
-            Log.e("Object", object.toString());
-            new GenericAsyncPostObject(
-                    MainActivity.this,
-                    MainActivity.this,
-                    TaskType.SCAN_ID_CARD).
-                    execute(object);
-
-
-
-
-        } else {
-            CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-        }
-    }
-
-
+//    private void uploadDataToServer(IdCardScanPojo scanData) {
+//
+//        if (AppStatus.getInstance(MainActivity.this).isOnline()) {
+//
+//            Log.e("Data From Dialog", scanData.toString());
+//
+//            //TODO Internet Check
+//            UploadObject object = new UploadObject();
+//            object.setUrl(Econstants.url);
+//            object.setMethordName(Econstants.methordverifyVehicle);
+//            object.setTasktype(TaskType.SCAN_ID_CARD);
+//            object.setParam(scanData.toJSON());
+//            Log.e("Object", object.toString());
+//            new GenericAsyncPostObject(
+//                    MainActivity.this,
+//                    MainActivity.this,
+//                    TaskType.SCAN_ID_CARD).
+//                    execute(object);
+//
+//
+//
+//
+//        } else {
+//            CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//        }
+//    }
+//
+//
 
 
 
@@ -425,110 +410,110 @@ public class MainActivity extends LocationBaseActivity implements SamplePresente
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onTaskCompleted(ResponsePojoGet result, TaskType taskType) throws JSONException {
-        if (taskType == TaskType.SCAN_ID_CARD) {
-            Log.e("Data",result.toString());
-            if (result.getResponse().isEmpty()) {
-                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-            } else {
-
-                try {
-                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
-
-                    if (response.getStatus().equalsIgnoreCase("OK")) {
-
-                        if(Econstants.checkJsonObject(response.getResponse())){
-                            try{
-                                Log.e("verify",response.getResponse());
-                                IDCardOwnerServerVerify IDCard = JsonParse.getIdCardUserServerDetailsComplete(response.getResponse());
-                                Log.e("IDCard",IDCard.toString());
-                                CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
-                            }catch(Exception ex){
-                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
-                            }
-
-                        }else{
-                            CD.showDialog(MainActivity.this, response.getResponse());
-                        }
-
-
-                    } else {
-                      //  CD.showDialog(MainActivity.this, response.getResponse());
-                    }
-                } catch (Exception ex) {
-                   // CD.showDialog(MainActivity.this, result.getResponse());
-                }
-
-            }
-
-
-        }
-        if(taskType == TaskType.VERIFY_DETAILS){
-            if (result.getResponse().isEmpty()) {
-                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-            } else {
-
-                try {
-                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
-
-                    if (response.getStatus().equalsIgnoreCase("OK")) {
-
-                        if(Econstants.checkJsonObject(response.getResponse())){
-                            try{
-                                Log.e("verify",response.getResponse());
+//        if (taskType == TaskType.SCAN_ID_CARD) {
+//            Log.e("Data",result.toString());
+//            if (result.getResponse().isEmpty()) {
+//                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//            } else {
+//
+//                try {
+//                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
+//
+//                    if (response.getStatus().equalsIgnoreCase("OK")) {
+//
+//                        if(Econstants.checkJsonObject(response.getResponse())){
+//                            try{
+//                                Log.e("verify",response.getResponse());
+//                                IDCardOwnerServerVerify IDCard = JsonParse.getIdCardUserServerDetailsComplete(response.getResponse());
+//                                Log.e("IDCard",IDCard.toString());
+//                                CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
+//                            }catch(Exception ex){
+//                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
+//                            }
+//
+//                        }else{
+//                            CD.showDialog(MainActivity.this, response.getResponse());
+//                        }
+//
+//
+//                    } else {
+//                      //  CD.showDialog(MainActivity.this, response.getResponse());
+//                    }
+//                } catch (Exception ex) {
+//                   // CD.showDialog(MainActivity.this, result.getResponse());
+//                }
+//
+//            }
+//
+//
+//        }
+//        if(taskType == TaskType.VERIFY_DETAILS){
+//            if (result.getResponse().isEmpty()) {
+//                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//            } else {
+//
+//                try {
+//                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
+//
+//                    if (response.getStatus().equalsIgnoreCase("OK")) {
+//
+//                        if(Econstants.checkJsonObject(response.getResponse())){
+//                            try{
+//                                Log.e("verify",response.getResponse());
+////                                IDCardOwnerServerVerify  IDCard = JsonParse.getIdCardUserServerDetailsComplete(response.getResponse());
+////                                Log.e("IDCard",IDCard.toString());
+//                              //  CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
+//                            }catch(Exception ex){
+//                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
+//                            }
+//
+//                        }else{
+//                            CD.showDialog(MainActivity.this, response.getResponse());
+//                        }
+//
+//
+//                    } else {
+//                        //  CD.showDialog(MainActivity.this, response.getResponse());
+//                    }
+//                } catch (Exception ex) {
+//                    // CD.showDialog(MainActivity.this, result.getResponse());
+//                }
+//
+//            }
+//        }
+//        if(taskType == TaskType.SEARCH_ID){
+//            if (result.getResponse().isEmpty()) {
+//                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
+//            } else {
+//
+//                try {
+//                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
+//
+//                    if (response.getStatus().equalsIgnoreCase("OK")) {
+//
+//                        if(Econstants.checkJsonObject(response.getResponse())){
+//                            try{
+//                                Log.e("verify",response.getResponse());
 //                                IDCardOwnerServerVerify  IDCard = JsonParse.getIdCardUserServerDetailsComplete(response.getResponse());
 //                                Log.e("IDCard",IDCard.toString());
-                              //  CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
-                            }catch(Exception ex){
-                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
-                            }
-
-                        }else{
-                            CD.showDialog(MainActivity.this, response.getResponse());
-                        }
-
-
-                    } else {
-                        //  CD.showDialog(MainActivity.this, response.getResponse());
-                    }
-                } catch (Exception ex) {
-                    // CD.showDialog(MainActivity.this, result.getResponse());
-                }
-
-            }
-        }
-        if(taskType == TaskType.SEARCH_ID){
-            if (result.getResponse().isEmpty()) {
-                CD.showDialog(MainActivity.this, "Please Connect to Internet and try again.");
-            } else {
-
-                try {
-                    SuccessResponse response = JsonParse.getSuccessResponse(result.getResponse());
-
-                    if (response.getStatus().equalsIgnoreCase("OK")) {
-
-                        if(Econstants.checkJsonObject(response.getResponse())){
-                            try{
-                                Log.e("verify",response.getResponse());
-                                IDCardOwnerServerVerify  IDCard = JsonParse.getIdCardUserServerDetailsComplete(response.getResponse());
-                                Log.e("IDCard",IDCard.toString());
-                                CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
-                            }catch(Exception ex){
-                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
-                            }
-
-                        }else{
-                            CD.showDialog(MainActivity.this, response.getResponse());
-                        }
-
-
-                    } else {
-                        //  CD.showDialog(MainActivity.this, response.getResponse());
-                    }
-                } catch (Exception ex) {
-                    // CD.showDialog(MainActivity.this, result.getResponse());
-                }
-
-            }
-        }
+//                                CD.displayIdCardDetailsComplete(MainActivity.this,IDCard, userLocation);
+//                            }catch(Exception ex){
+//                                CD.showDialog(MainActivity.this, ex.getLocalizedMessage());
+//                            }
+//
+//                        }else{
+//                            CD.showDialog(MainActivity.this, response.getResponse());
+//                        }
+//
+//
+//                    } else {
+//                        //  CD.showDialog(MainActivity.this, response.getResponse());
+//                    }
+//                } catch (Exception ex) {
+//                    // CD.showDialog(MainActivity.this, result.getResponse());
+//                }
+//
+//            }
+//        }
     }
 }

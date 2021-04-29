@@ -24,42 +24,26 @@ import java.io.UnsupportedEncodingException;
  */
 public class Econstants {
 
-    //Development
-   // public static final String url = "http://staging12.hp.gov.in/api";
-    public static final String url = " http://transportid.hp.gov.in/api";
+    //Development  http://192.168.1.34:8080/eLahaulV23/api
+    public static final String url = " http://192.168.1.34:8080/eLahaulV23/api";
+
     public static final String stateID = "9";
     public static final String blank = "";
     public static final String internetNotAvailable = "Internet not Available. Please Connect to Internet and try again.";
-    public static final String methordGetDistrict = "/districts/";
-    public static final String methordGetBarriers = "/barriers/";
-    public static final String methordGetOTP = "/getotp/";
-    public static final String methordVerifyOtp = "/verifyotp/";
-    public static final String methordGetVehicleType = "/vehicletypes/";
-    public static final String methodVehicleUserType = "/vehicleusertypes/";
-    public static final String methordUploadData = "/uploadData/";
-    public static final String methordverifyVehicle = "/verifyVehicle/";
-    public static final String methordSaveVehicleTransaction = "/saveVehicleData/";
-    public static final String methordSearchId = "/searchId/";
+
+    public static final String methordLogin = "/login";
+    public static final String methordGetCompleteApplication = "/getCompleteApplication";
 
     public static final String Date_Format = "dd-MM-yyyy";
-
-    public static final String vahan = "http://staging12.hp.gov.in/api/";
-    public static final String getCarDetailsVahan = "getVehicleDetails";
-    public static final String getDL = "getDlDetails/";
-    public static final String getEngineDetailsVahan = "getEngineDetails";
-    public static final String securityKeyAES = "hPeDisTRict@310720";
-    public static final String clientId = "HPEDISTRICT";
+    public static final String HTTP_FALIURE = "";
+    public static final String HTTP_SUCCESS = "";
 
 
-
-
-
-    public static ResponsePojoGet createOfflineObject(String url, String requestParams, String response, String Code, String functionName) {
+    public static ResponsePojoGet createOfflineObject(String url, String requestParams, String response, String Code) {
         ResponsePojoGet pojo = new ResponsePojoGet();
         pojo.setUrl(url);
         pojo.setRequestParams(requestParams);
         pojo.setResponse(response);
-        pojo.setFunctionName(functionName);
         pojo.setResponseCode(Code);
 
         return pojo;
@@ -67,15 +51,7 @@ public class Econstants {
 
 
 
-    public static String generateAuthenticationPasswrd(String username, String password)
-            throws UnsupportedEncodingException {
-        StringBuilder SB = new StringBuilder();
-        SB.append(username + ":" + password);
-        System.out.println(Base64.encodeToString(SB.toString().getBytes(),Base64.DEFAULT));
 
-        return Base64.encodeToString(SB.toString().getBytes(),Base64.DEFAULT);
-      //  return Base64.getEncoder().encodeToString(SB.toString().getBytes("utf-8"));
-    }
 
     public static boolean checkJsonObject(String data) throws JSONException {
         Object json = new JSONTokener(data).nextValue();
